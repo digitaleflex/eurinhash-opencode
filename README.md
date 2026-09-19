@@ -1,10 +1,25 @@
 # EurinHash OpenCode
 
-Architecture and execution prompt system for transforming OpenCode into the EurinHash / HashCode Terminal Agent Command Center.
+Architecture and execution prompt system for transforming OpenCode into the **EurinHash / HashCode Terminal Agent Command Center**.
 
 ## Objective
 
-This repository is the source of truth for the research, architecture, UX, observability, implementation and QA prompts used to evolve the OpenCode TUI without destabilizing the underlying agent engine.
+This repository is the source of truth for the research, architecture, UX, observability, implementation, QA and release process used to evolve the OpenCode TUI without destabilizing the underlying agent engine.
+
+## Product architecture
+
+```text
+OpenCode Backend
+      ↓
+OpenCode SDK / API
+      ↓
+HashCode Terminal
+  ├─ Command Center UI
+  ├─ Agent Experience
+  ├─ Observability
+  ├─ Interaction / Personalization
+  └─ Terminal Design System
+```
 
 ## Prompt execution order
 
@@ -21,14 +36,56 @@ This repository is the source of truth for the research, architecture, UX, obser
 10. QA, Performance & Regression
 11. Release, Documentation & Upstream Sync
 
+The expanded specifications are in `prompts/MASTER-PROMPTS-DETAILED.md`.
+
+## Governance documents
+
+- `MASTER-PLAN.md` — product and engineering gates.
+- `AGENTS.md` — mandatory coding-agent contract.
+- `prompts/MASTER-PROMPTS-DETAILED.md` — detailed 12-phase execution specification.
+- `docs/EXECUTION-GUIDE.md` — evidence and execution protocol.
+- `docs/DELIVERABLES.md` — required artifact registry.
+- `docs/TRACEABILITY-MATRIX.md` — runtime → state → UI traceability.
+- `docs/ARCHITECTURE.md` — architectural constraints and invariants.
+
 ## Operating principle
 
 Inspect the current repository before changing anything. Prefer existing OpenCode primitives, SDK boundaries and extension points. Do not invent data. Preserve working agent behavior. Separate domain state from presentation state. Every implementation phase must end with verification.
 
+## State semantics
+
+Keep session, request, model, stream, tool, MCP server, MCP model access, LSP, permission, workspace and UI states distinct. `UNKNOWN != ZERO`.
+
 ## Upstream reference
 
-OpenCode upstream is actively evolving. The current upstream repository uses a canonical TUI under `packages/opencode/src/cli/cmd/tui` while a migration toward `packages/tui` and `@opencode-ai/tui` is specified. The TUI/SDK boundary must therefore be treated as an explicit architectural constraint.
+OpenCode upstream is actively evolving. The current upstream TUI location and the migration toward `packages/tui` / `@opencode-ai/tui` must be re-checked at execution time. The TUI/SDK boundary is therefore an explicit architectural constraint, not a fixed path assumption.
 
 ## Directory
 
-See `docs/ARCHITECTURE.md` for the repository map and `prompts/` for the master prompts.
+```text
+AGENTS.md
+MASTER-PLAN.md
+prompts/
+  README.md
+  MASTER-PROMPTS-DETAILED.md
+  00–11 individual prompts
+docs/
+  ARCHITECTURE.md
+  EXECUTION-GUIDE.md
+  DELIVERABLES.md
+  TRACEABILITY-MATRIX.md
+  recon/
+  architecture/
+  ux/
+  design/
+  state/
+  agent/
+  observability/
+  ui/
+  interaction/
+  implementation/
+  qa/
+  release/
+```
+
+See `prompts/README.md` to begin execution.
