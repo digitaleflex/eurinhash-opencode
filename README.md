@@ -21,6 +21,12 @@ HashCode Terminal
   └─ Terminal Design System
 ```
 
+## Mission-centered product model
+
+The primary product object is the **mission**, not the chat. A mission contains its contract, tasks, resources, agents, tools, execution, validation and proof. The Command Center exposes this lifecycle without creating a second source of truth.
+
+See `docs/EURINHASH-COMMAND-CENTER.md` and `docs/EURINHASH-MISSION-UX-FR-EN.md`.
+
 ## Prompt execution order
 
 00. Deep Recon
@@ -47,6 +53,8 @@ The expanded specifications are in `prompts/MASTER-PROMPTS-DETAILED.md`.
 - `docs/DELIVERABLES.md` — required artifact registry.
 - `docs/TRACEABILITY-MATRIX.md` — runtime → state → UI traceability.
 - `docs/ARCHITECTURE.md` — architectural constraints and invariants.
+- `docs/EURINHASH-COMMAND-CENTER.md` — mission-centered Command Center contract.
+- `docs/EURINHASH-MISSION-UX-FR-EN.md` — bilingual mission UX specification.
 
 ## Operating principle
 
@@ -74,6 +82,8 @@ docs/
   EXECUTION-GUIDE.md
   DELIVERABLES.md
   TRACEABILITY-MATRIX.md
+  EURINHASH-COMMAND-CENTER.md
+  EURINHASH-MISSION-UX-FR-EN.md
   recon/
   architecture/
   ux/
